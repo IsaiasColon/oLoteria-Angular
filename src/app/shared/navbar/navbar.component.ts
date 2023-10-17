@@ -1,0 +1,83 @@
+// import { error } from '@angular/compiler/src/util';
+import { Component, OnInit } from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { JugadoresService } from 'src/app/services/jugadores.service';
+import { IJugador, JugadorConectado } from 'src/app/_models/jugador';
+import { LoginFormComponent } from '../login-form/login-form.component';
+import { LoginService } from "src/app/services/login.service";
+import { LocalStorageService } from "src/app/services/local-storage.service";
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+
+  public usuario: IJugador = JugadorConectado;
+
+  constructor(
+    public dialog: MatDialog,
+    private _ls: LoginService,
+    private localStorage: LocalStorageService
+    ) {}
+
+  ngOnInit(): void {
+    if (!this.usuario) {
+      this.isLogin();
+    }
+  }
+
+  isLogin(){
+    this.usuario = this.localStorage.obtenerUsuarioConectado() as IJugador;
+    if (this.usuario) {
+      // console.log(this.usuario);      
+    }
+  }
+
+  links = ['First', 'Second', 'Third'];
+  activeLink = this.links[0];
+  background: ThemePalette = undefined;
+
+  toggleBackground() {
+    this.background = this.background ? undefined : 'primary';
+  }
+
+  addLink() {
+    this.links.push(`Link ${this.links.length + 1}`);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LoginFormComponent, {
+      width: '250px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+      // console.log(result);
+      if (result) {
+        this.login(result);        
+      }
+    });
+  }
+
+  login(nickName: any){
+    this._ls.login(nickName).subscribe( (user:IJugador) => {
+      this.usuario = user;
+      if (this.usuario) {
+        this.localStorage.guardarUsuarioConectado(user);
+        console.log(user);        
+      }
+    }, error => {
+      console.log(error);      
+    });
+  }
+
+  logout(){
+    this.localStorage.borrarUsuarioConectado();
+    this.usuario = {} as any;
+  }
+
+}
