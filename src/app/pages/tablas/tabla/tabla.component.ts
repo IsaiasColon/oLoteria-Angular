@@ -21,7 +21,7 @@ export class TablaComponent implements OnInit {
   row3 = ['3:0', '3:1', '3:2', '3:3'];
 
   tabla: ITabla = {} as ITabla;
-  cartas: any[] = [];
+  cartas: number[] = [];
   id: string = '';
 
   constructor(
@@ -45,16 +45,18 @@ export class TablaComponent implements OnInit {
   }
 
   getTabla(id: number){
-    this._ts.getTabla(id).subscribe(tabla => {
+    this._ts.getTabla(id).subscribe((tabla:any) => {
       console.log(tabla);
       this.tabla = tabla;
+      this.tabla.cartas = tabla.cartas.split(',');
+      this.cartas = this.tabla.cartas;
     })
   }
 
   mostrarCartas(cartas: any[]){
     if (cartas) {
       console.log(this.cartas);
-      this.cartas = cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo));      
+      // this.cartas = cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo));      
       console.log(this.cartas);
 
       // this.tablaFloat.Cartas = this.cartas;
@@ -69,7 +71,7 @@ export class TablaComponent implements OnInit {
   getCartas(tabla: any){
     this._cs.getCartasByTabla(tabla).subscribe( (cartas: ICarta[]) => {
       console.log(cartas);
-      this.cartas = cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo));
+      // this.cartas = cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo));
     });
   }
 
@@ -80,7 +82,7 @@ export class TablaComponent implements OnInit {
   GenerarCartas(tabla: any){
     this._cs.GenerarCartas(tabla).subscribe( (cartas: ICarta[]) => {
       console.log(cartas);
-      this.cartas = cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo));
+      // this.cartas = cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo));
       // this.tablaFloat.Cartas = this.cartas;
       // this.getCartas(tabla);
     });

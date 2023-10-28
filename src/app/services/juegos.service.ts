@@ -12,8 +12,8 @@ export class JuegosService {
 
   constructor( private http: HttpClient ) { }
 
-  gets(): Observable<IJuego[]>{
-    return this.http.get<IJuego[]>(this.api + 'Listar');
+  gets(): Observable<any[]>{
+    return this.http.get<any[]>(this.api + 'Listar');
   }
 
   getJuego(id:any): Observable<IJuego>{

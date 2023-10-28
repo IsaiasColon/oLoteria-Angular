@@ -24,12 +24,9 @@ export class JuegosComponent implements OnInit {
   }
 
   getJuegos(){
-    this._js.gets().subscribe( (juegos: IJuego[]) => {
+    this._js.gets().subscribe( (juegos: any[]) => {
       console.log(juegos);      
       this.juegos = juegos;
-    }, error => {
-      console.log(error);
-      
     });
   }
 
@@ -40,12 +37,12 @@ export class JuegosComponent implements OnInit {
       this._js.activar(juego).subscribe( juego => {
         console.log(juego);
         
-      }, error => console.error(error));
+      });
     }else{
       this._js.desactivar(juego).subscribe( juego => {
         console.log(juego);
         
-      }, error => console.error(error));
+      });
     }
   }
 
@@ -53,7 +50,7 @@ export class JuegosComponent implements OnInit {
     this._js.eliminarJuego(id).subscribe( juego => {
       console.log(juego);
       this.getJuegos();
-    }, error => console.error(error));
+    });
   }
 
   openDialog(juego?: IJuego): void {

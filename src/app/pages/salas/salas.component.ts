@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { JuegosService } from 'src/app/services/juegos.service';
 import { JugadoresService } from 'src/app/services/jugadores.service';
@@ -17,6 +15,9 @@ import { IJugador, JugadorConectado } from "../../_models/jugador";
 import { EntrarSalaDialogComponent } from './components/entrar-sala-dialog/entrar-sala-dialog.component';
 import { MisTablasComponent } from './components/mis-tablas/mis-tablas.component';
 import { SalasFormComponent } from './salas-form/salas-form.component';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-salas',
@@ -27,10 +28,11 @@ export class SalasComponent implements OnInit, AfterViewInit {
   salas: ISala[] = [];
   jugadores: IJugador[] = [];
 
-  dataSource: MatTableDataSource<ISala> = {} as any;
-  @ViewChild(MatSort) sort: MatSort = {} as any;
-
   displayedColumns: string[] = ['position', 'nombre', 'tipo', 'creador', 'jugadoresMin', 'jugadoresMax', 'protegida', 'contra', 'activo', 'acciones'];
+  dataSource: MatTableDataSource<ISala> = {} as any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator = {} as any;
+  @ViewChild(MatSort) sort: MatSort = {} as any;
 
   constructor(
     private _ss: SalasService,
@@ -43,16 +45,16 @@ export class SalasComponent implements OnInit, AfterViewInit {
     ) { 
       
     // Create 100 users
-    this.getSalas();
+    // this.getSalas();
     }
 
   ngOnInit(): void {
-    this.getJugadores();
+    // this.getJugadores();
     // this.getSalas();
   }
 
   ngAfterViewInit(){
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
   }
 
   seleccionarTablas( sala: ISala ): void {
@@ -104,9 +106,6 @@ export class SalasComponent implements OnInit, AfterViewInit {
 
       // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(salas);
-    }, error => {
-      console.log(error);
-      
     });
   }  
 
@@ -114,7 +113,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
     this._ss.eliminarSala(sala).subscribe( sala => {
       console.log(sala);
       this.getSalas();
-    }, error => console.error(error));
+    });
   }
 
 
@@ -123,12 +122,12 @@ export class SalasComponent implements OnInit, AfterViewInit {
       this._ss.activar(sala).subscribe( sala => {
         // console.log(sala);
         
-      }, error => console.error(error));
+      });
     }else{
       this._ss.desactivar(sala).subscribe( sala => {
         // console.log(sala);
         
-      }, error => console.error(error));
+      });
     }
   }  
 
@@ -136,7 +135,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
     this._jss.gets().subscribe( jugadores =>{
       this.jugadores = jugadores;
       console.log(jugadores);      
-    }, error => console.error(error));
+    });
   }
 
   openDialog(sala?: ISala): void {

@@ -10,17 +10,17 @@ import { Cartas, ICarta } from 'src/app/_models/carta';
 export class TablaFloatComponent implements OnInit, OnChanges{
 
   @Input() Cartas: any[] = [];
-  nTabla: any[] = [];
+  nTabla: number[] = [];
   @Output() tablaCambiada: EventEmitter<any>;
 
   // @Input() row0: any[] = [1,2,3,4];
   // @Input() row1: any[] = [5,6,7,8];
   // @Input() row2: any[] = [9,10,11,12];
   // @Input() row3: any[] = [13,14,15,16];
-  @Input() row0: any[] = [];
-  @Input() row1: any[] = [];
-  @Input() row2: any[] = [];
-  @Input() row3: any[] = [];
+  @Input() row0: number[] = [];
+  @Input() row1: number[] = [];
+  @Input() row2: number[] = [];
+  @Input() row3: number[] = [];
 
   constructor() {
     this.tablaCambiada = new EventEmitter();
@@ -38,7 +38,7 @@ export class TablaFloatComponent implements OnInit, OnChanges{
     }
   }
 
-  public crearMatriz(cartas: Array<any>){
+  public crearMatriz(cartas: Array<number>){
     // this.row0 = null;
     this.row0 = cartas.slice(0,4);
     // this.row1 = null;
@@ -67,15 +67,15 @@ export class TablaFloatComponent implements OnInit, OnChanges{
     // });  
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<number[]>) {
     moveItemInArray(this.row0, event.previousIndex, event.currentIndex);
   }
 
-  drop2(event: CdkDragDrop<string[]>) {
+  drop2(event: CdkDragDrop<number[]>) {
     moveItemInArray(this.row1, event.previousIndex, event.currentIndex);
   }
 
-  dropGroup(event: CdkDragDrop<string[]>) {
+  dropGroup(event: CdkDragDrop<number[]>) {
     if (event.previousContainer === event.container) {
       
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

@@ -13,8 +13,8 @@ export class SalasService {
 
   constructor( private http: HttpClient ) { }
 
-  gets(): Observable<ISala[]>{
-    return this.http.get<ISala[]>(this.api + 'Listar');
+  gets(): Observable<any>{
+    return this.http.get(this.api + 'Listar');
   }
 
   getSala(id:any): Observable<ISala>{

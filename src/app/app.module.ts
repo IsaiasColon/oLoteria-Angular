@@ -59,6 +59,8 @@ import { SalasFormComponent } from './pages/salas/salas-form/salas-form.componen
 import { EntrarSalaDialogComponent } from './pages/salas/components/entrar-sala-dialog/entrar-sala-dialog.component';
 import { MisTablasComponent } from './pages/salas/components/mis-tablas/mis-tablas.component';
 import { JuegosFormComponent } from './pages/juegos/juegos-form/juegos-form.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -118,7 +120,9 @@ import { JuegosFormComponent } from './pages/juegos/juegos-form/juegos-form.comp
     DragDropModule,
     MatTabsModule,
     MatDatepickerModule,
-    MatListModule
+    MatListModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   exports: [],
   providers: [],
