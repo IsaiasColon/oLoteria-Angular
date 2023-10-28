@@ -1,0 +1,19 @@
+<h1>Agregar Rol</h1>
+
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+    <div class="form-group" [ngClass]="{'has-error': (formGroup.get('nombre')?.touched || formGroup.get('nombre')?.dirty) && formGroup.get('nombre')?.invalid}">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input id="nombreId"
+                matInput placeholder="Placeholder"
+                type="text"
+                required
+                formControlName="nombre">
+          </mat-form-field>
+    </div>
+  
+    <div mat-dialog-actions align="end">
+        <button mat-button color="accent" type="button" (click)="onNoClick()">Cancelar</button>
+        <button mat-button color="primary" [mat-dialog-close]="data.rol" type="submit">Guardar</button>
+      </div>
+</form>

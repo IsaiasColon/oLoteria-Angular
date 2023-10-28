@@ -1,1 +1,8 @@
 <p>juego works!</p>
+<div *ngIf="sala">
+    <div *ngIf="sala.creador == jugador.id">
+        <!-- <button mat-raised-button *ngIf="juego" (click)="iniciarJuego()">Iniciar Juego</button> -->
+        <br>
+        <button mat-raised-button *ngIf="juego" (click)="LanzarCarta()">Lanzar Carta</button>
+    </div>
+</div>

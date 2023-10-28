@@ -1,0 +1,91 @@
+
+<div class="tabla" cdkDropListGroup *ngIf="Cartas.length">
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 0"
+      [cdkDropListData]="row0" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row0" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt="">
+      </div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 4"
+      [cdkDropListData]="row1" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row1" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt=""></div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 8"
+      [cdkDropListData]="row2" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row2" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt=""></div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 12"
+      [cdkDropListData]="row3" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row3" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt=""></div>
+    </div>
+    
+  </div>
+  
+  <!-- <div class="tabla" cdkDropListGroup *ngIf="Cartas.length">
+    
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 0"
+      [cdkDropListData]="row0" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row0" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt="">
+      </div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 4"
+      [cdkDropListData]="row1" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row1" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt=""></div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 8"
+      [cdkDropListData]="row2" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row2" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt=""></div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" *ngIf="Cartas.length > 12"
+      [cdkDropListData]="row3" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let carta of row3" cdkDrag (click)="valor(carta)">
+        <img class="imgCarta" [src]="carta | carta" alt=""></div>
+    </div>
+    
+  </div> -->
+  
+  <!-- <div class="tabla" cdkDropListGroup *ngIf="Cartas.length">
+    
+    <div cdkDropList cdkDropListOrientation="horizontal" 
+      [cdkDropListData]="row0" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let row of row0" cdkDrag (click)="valor(row)">
+        {{ row }}
+      </div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal" 
+      [cdkDropListData]="row1" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let row of row1" cdkDrag (click)="valor(row)">
+        {{ row }}
+      </div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal"
+      [cdkDropListData]="row2" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let row of row2" cdkDrag (click)="valor(row)">
+        {{ row }}
+      </div>
+    </div>
+  
+    <div cdkDropList cdkDropListOrientation="horizontal"
+      [cdkDropListData]="row3" class="example-list" (cdkDropListDropped)="dropGroup($event)">
+      <div class="example-box" *ngFor="let row of row3" cdkDrag (click)="valor(row)">
+        {{ row }}
+      </div>
+    </div>
+    
+  </div> -->
+  

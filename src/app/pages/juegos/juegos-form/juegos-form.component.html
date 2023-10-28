@@ -1,0 +1,57 @@
+<!-- <div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.nombre">
+  </mat-form-field>
+</div> -->
+
+<form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+
+    <h1 mat-dialog-title align="center">{{modoEdicion? 'Editar Juego': 'Agregar Juego'}}</h1>
+
+    <div mat-dialog-content>
+        <!-- <mat-form-field class="example-full-width" >
+            <mat-label>Nombre</mat-label>
+            <input matInput required autocomplete="name" type="text" formControlName="nombre">
+        </mat-form-field> -->
+          
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" >
+                <mat-label>Sala</mat-label>
+                <mat-select formControlName="sala">
+                    <mat-option *ngFor="let sala of salas" [value]="sala.id" >
+                        {{sala.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field></td>
+        </tr></table>
+          
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" >
+                <mat-label>Ganador</mat-label>
+                <mat-select formControlName="ganador">
+                    <mat-option *ngFor="let ganador of jugadores" [value]="ganador.id" >
+                        {{ganador.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field></td>
+        </tr></table>
+          
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field>
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field></td>
+            <!-- <td><mat-checkbox formControlName="activo" class="example-margin">Activo</mat-checkbox></td> -->
+        </tr></table>
+            
+    </div>
+      <div mat-dialog-actions align="end">
+        <button mat-button color="accent" type="button" (click)="onNoClick()">Cancelar</button>
+        <button mat-button color="primary" [mat-dialog-close]="data.juego" type="submit">Guardar</button>
+      </div>
+  </form>
+  

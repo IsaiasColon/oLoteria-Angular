@@ -1,0 +1,83 @@
+<div cdkDropListGroup class="drop-list-group">
+  <div class="example-container">
+
+    <div
+      cdkDropList
+      [cdkDropListData]="row0"
+      class="example-list">
+      <div class="example-box" *ngFor="let item of row0" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <div
+      cdkDropList
+      [cdkDropListData]="row1"
+      class="example-list">
+      <div class="example-box" *ngFor="let item of row1" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <div
+      cdkDropList
+      [cdkDropListData]="row2"
+      class="example-list">
+      <div class="example-box" *ngFor="let item of row2" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <div
+      cdkDropList
+      [cdkDropListData]="row3"
+      class="example-list">
+      <div class="example-box" *ngFor="let item of row3" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <div cdkDropListGroup class="drop-list-group">
+    <div class="example-container">
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="row0"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of row0" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <div
+        cdkDropList
+        [cdkDropListData]="row1"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of row1" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <div
+        cdkDropList
+        [cdkDropListData]="row2"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of row2" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  
+    <div class="example-container">
+      <div
+        cdkDropList
+        [cdkDropListData]="row3"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of row3" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  
+  </div> -->

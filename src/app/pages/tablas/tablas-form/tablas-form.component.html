@@ -1,0 +1,36 @@
+<!-- <div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.nombre">
+  </mat-form-field>
+</div> -->
+
+<form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+
+    <h1 mat-dialog-title align="center">{{modoEdicion? 'Editar Tabla': 'Agregar Tabla'}}</h1>
+
+    <div mat-dialog-content>
+        <mat-form-field class="example-full-width" >
+            <mat-label>Nombre</mat-label>
+            <input matInput required autocomplete="name" type="text" formControlName="nombre">
+        </mat-form-field>
+          
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" >
+                <mat-label>Jugador</mat-label>
+                <mat-select formControlName="jugador">
+                    <mat-option *ngFor="let jugador of jugadores" [value]="jugador.id" >
+                        {{jugador.nombre}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field></td>
+        </tr></table>
+            
+    </div>
+      <div mat-dialog-actions align="end">
+        <button mat-button color="accent" type="button" (click)="onNoClick()">Cancelar</button>
+        <button mat-button color="primary" [mat-dialog-close]="data.tabla" type="submit">Guardar</button>
+      </div>
+  </form>
+  <p>tablas-form works!</p>

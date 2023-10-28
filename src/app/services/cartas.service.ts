@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartasService {
-  api = 'https://localhost:44324/Cartas/';
+  api = 'https://localhost:44324/api/Cartas/';
 
   constructor( private http: HttpClient ) { }
 

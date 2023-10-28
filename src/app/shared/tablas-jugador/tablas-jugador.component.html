@@ -1,0 +1,30 @@
+
+
+
+<div [ngClass]="[seleccionada ? 'tabla-seleccionada' : 'tabla']" class="tabla" *ngIf="tabla.cartas && tabla.cartas.length == 16">
+    <mat-grid-list cols="4" rowHeight="7:11">
+        <mat-grid-tile-header>
+          <mat-label *ngIf="titulo">{{ tabla.nombre }}</mat-label>
+        </mat-grid-tile-header>
+        <mat-grid-tile *ngFor="let carta of tabla.cartas">
+            <div>
+                <img *ngIf="cartasLanzadas.includes(carta.numero)" class="carta cartaSalida" [src]="carta.numero | carta" alt="">
+                <img *ngIf="!cartasLanzadas.includes(carta.numero)" class="carta cartaPorSalir" [src]="carta.numero | carta" alt="">
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
+    <!-- <div class="tabla" *ngFor="let tabla of tablas">
+      <mat-grid-list cols="4" rowHeight="7:11">
+        <mat-grid-tile-header>{{ tabla.user }}</mat-grid-tile-header>
+        <mat-grid-tile *ngFor="let carta of tabla.cartas">
+          <div>
+            <img *ngIf="cartasLanzadas.includes(carta)" class="carta cartaSalida" [src]="carta | carta" alt="">
+              // Comentado    <img *ngIf="!cartasLanzadas.includes(carta)" src="/src
+              // Comentado    /assets/img/fichas/azul.png" class="colocarFicha" alt="">
+            <img *ngIf="!cartasLanzadas.includes(carta)" class="carta cartaPorSalir" [src]="carta | carta" alt="">
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div> -->

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IJuego } from '../_models/juego';
 import { ITabla } from '../_models/tabla';
-// import { ITablaJugada } from '../_models/tabla';
+import { ITablaJugada } from '../_models/tabla-jugada';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,9 @@ export class TablasJugadasService {
 
   constructor( private http: HttpClient ) { }
 
-  // getJugadas(id): Observable<ITablaJugada[]>{
-  //   return this.http.get<ITablaJugada[]>(this.api + 'Jugadas/' + id);
-  // }
+  getJugadas(id: number): Observable<ITablaJugada[]>{
+    return this.http.get<ITablaJugada[]>(this.api + 'Jugadas/' + id);
+  }
 
   // gets(): Observable<ITablaJugada[]>{
   //   return this.http.get<ITablaJugada[]>(this.api + 'Listar');

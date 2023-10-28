@@ -1,0 +1,29 @@
+<h1 mat-dialog-title *ngIf="!sala">Entrando a sala</h1>
+<h1 mat-dialog-title *ngIf="sala">Entrando a sala: {{ sala.nombre }}</h1>
+<div mat-dialog-content  *ngIf="tablas.length > 0">
+  <h3>Selecciona tus tablas: <small>( {{ tablasSeleccionadas.length }} )</small></h3>
+
+  <app-tablas-jugador [seleccionada]="tabla.seleccionada" [ngClass]="{'tabla-seleccionada': tablasSeleccionadas.includes( tabla )}"
+                      *ngFor="let tabla of tablas" [tabla]="tabla" [titulo]="true"
+                      (click)="tablaSeleccionada( tabla )"></app-tablas-jugador> 
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button cdkFocusInitial (click)="entrar()">Si</button>
+</div>
+
+<!-- 
+<div class="row">
+    <div class="col">
+        <h1>Mis Tablas</h1>
+        <h3>Selecciona tus tablas</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+
+
+
+    </div>
+</div> -->
