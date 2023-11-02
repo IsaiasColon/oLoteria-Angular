@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import { RolesService } from 'src/app/services/roles.service';
 import { IJugador } from 'src/app/_models/jugador';
 import { IRol } from 'src/app/_models/rol';
@@ -24,13 +24,13 @@ export class JugadoresFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data = {} as any,
     private fb: FormBuilder,
     private _rs: RolesService,
-    private _js: JugadoresService
+    private _js: UsuariosService
   ) { }
 
   crearForm(){
     this.formGroup = this.fb.group({
       nombre: '',
-      nickName: '',
+      userName: '',
       correo: '',
       contra: '',
       rol: 1
@@ -40,7 +40,7 @@ export class JugadoresFormComponent implements OnInit {
   cargarForm(jugador: IJugador){
     this.formGroup.patchValue({
       nombre: jugador.nombre,
-      nickName: jugador.nickName,
+      userName: jugador.userName,
       correo: jugador.correo,
       contra: jugador.contra,
       rol: jugador.rol
@@ -95,26 +95,22 @@ export class JugadoresFormComponent implements OnInit {
 
   crearJugador(jugador: IJugador){
     return this._js.crearJugador(jugador).subscribe( jugador => {
-      this.onSaveSuccess();
+      this.onSaveSuccess("se agrego un jugador");
       // console.log(jugador);
       this.jugador = jugador;
       this.closeDialog(this.jugador);
-    }, error => {
-      console.error(error);
     });
   }
 
   editarJugador(jugador: IJugador){
     this._js.editarJugador(jugador).subscribe( jugador => {
-      this.onSaveSuccess();
-    }, error => {
-      console.error(error);
+      this.onSaveSuccess("Usuario Modificado");
     });
   }
   
-  onSaveSuccess(){
+  onSaveSuccess(texto: string){
     // this.router.navigate(["/roles"]);
-    console.log("se agrego un jugador");
+    console.log(texto);
     
   }
 

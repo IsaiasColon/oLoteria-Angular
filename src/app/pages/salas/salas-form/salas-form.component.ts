@@ -1,11 +1,11 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import { SalasService } from 'src/app/services/salas.service';
 import { IJugador } from 'src/app/_models/jugador';
-import { ISala, Tipos } from 'src/app/_models/sala';
+import { ISala, Sala, Tipos } from 'src/app/_models/sala';
 
 @Component({
   selector: 'app-salas-form',
@@ -15,7 +15,7 @@ import { ISala, Tipos } from 'src/app/_models/sala';
 export class SalasFormComponent implements OnInit {
 
   modoEdicion: boolean = false;
-  formGroup: FormGroup = {} as FormGroup;
+  formGroup: FormGroup = {} as any;
   sala: ISala = {} as ISala;
   jugadores: IJugador[] = [];
   tipos = Tipos;
@@ -27,7 +27,7 @@ export class SalasFormComponent implements OnInit {
     private _ss: SalasService,
     private router: Router,
     private activated: ActivatedRoute,
-    private _js: JugadoresService) { }
+    private _js: UsuariosService) { }
 
   ngOnInit(): void {
     this.crearForm();
@@ -46,26 +46,22 @@ export class SalasFormComponent implements OnInit {
   }
 
   crearForm(){
-
     this.formGroup = this.fb.group({
       nombre: '',
       tipo: '',
-      jugadoresMin: 2,
-      jugadoresMax: 10,
-      protegida: true,
+      jugadorMin: 2,
+      jugadorMax: 10,
       contra: '',
       creador: ''
-    });
-
+    }); 
   }
 
   cargarForm(sala: ISala){
     this.formGroup.patchValue({
       nombre: sala.nombre,
       tipo: sala.tipo,
-      jugadoresMin: sala.jugadorMin,
-      jugadoresMax: sala.jugadorMax,
-      protegida: sala.protegida,
+      jugadorMin: sala.jugadorMin | 2,
+      jugadorMax: sala.jugadorMax | 10,
       contra: sala.contra,
       creador: sala.creador
     });
@@ -79,9 +75,12 @@ export class SalasFormComponent implements OnInit {
   }
 
   onSubmit(){
-    let sala: ISala = Object.assign({}, this.formGroup.value);
+    let sala: ISala = Object.assign({}, this.formGroup.value);    
     console.table(sala);
+    
     if (this.modoEdicion) {
+      console.log(sala);
+      
       sala.id = this.sala.id;
       this.editarSala(sala);
     } else{
@@ -89,19 +88,15 @@ export class SalasFormComponent implements OnInit {
     }
   }  
 
-  crearSala(sala: ISala){
+  crearSala(sala: any){
     this._ss.crearSala(sala).subscribe( sala => {
-      this.onSaveSuccess();
-    }, error => {
-      console.error(error);
+      this.onSaveSuccess(sala);
     });
   }
 
-  editarSala(sala: ISala){
+  editarSala(sala: any){
     this._ss.editarSala(sala).subscribe( sala => {
-      this.onSaveSuccess();
-    }, error => {
-      console.error(error);
+      this.onSaveSuccess(sala);
     });
   }
 
@@ -109,7 +104,8 @@ export class SalasFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onSaveSuccess(){
+  onSaveSuccess(sala:any){
     // this.router.navigate(["/tablas"]);
+    this.dialogRef.close(sala);
   }
 }

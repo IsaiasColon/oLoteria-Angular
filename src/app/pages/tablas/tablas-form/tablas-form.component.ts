@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import { TablasService } from 'src/app/services/tablas.service';
 import { IJugador } from 'src/app/_models/jugador';
 import { ITabla } from 'src/app/_models/tabla';
@@ -26,7 +26,7 @@ export class TablasFormComponent implements OnInit {
     private _ts: TablasService,
     private router: Router,
     private activated: ActivatedRoute,
-    private _js: JugadoresService) { }
+    private _js: UsuariosService) { }
 
   ngOnInit(): void {
     this.crearForm();

@@ -31,20 +31,20 @@
 
         <td><mat-form-field class="example-full-width" >
           <mat-label>Jugadores Minimo</mat-label>
-          <input #txtJugadoresMin matInput required autocomplete="name" 
-                  type="number" formControlName="jugadoresMin">
+          <input matInput required autocomplete="name" 
+                  type="number" formControlName="jugadorMin">
         </mat-form-field></td>
 
         <td><mat-form-field class="example-full-width" >
           <mat-label>Jugadores Maximo</mat-label>
-          <input #txtJugadoresMax matInput required autocomplete="name" 
-                  type="number" formControlName="jugadoresMax">
+          <input matInput required autocomplete="name" 
+                  type="number" formControlName="jugadorMax">
         </mat-form-field></td>
 
       </tr></table>
       
       <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-checkbox #protegida required class="example-margin" formControlName="protegida">Protegida</mat-checkbox></td>
+        <!-- <td><mat-checkbox #protegida required class="example-margin" formControlName="protegida">Protegida</mat-checkbox></td> -->
         <td><mat-form-field class="example-full-width" >
           <mat-label>Contraseña</mat-label>
           <input matInput autocomplete="name" type="password" formControlName="contra">

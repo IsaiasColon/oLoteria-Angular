@@ -21,11 +21,11 @@ export class SalasService {
     return this.http.get<ISala>(this.api + 'Mostrar/' + id);
   }
 
-  crearSala(sala: ISala): Observable<ISala> {
+  crearSala(sala: any): Observable<ISala> {
     return this.http.post<ISala>(this.api + 'Crear', sala);
   }
 
-  editarSala(sala: ISala): Observable<ISala> {
+  editarSala(sala: any): Observable<ISala> {
     return this.http.put<ISala>(this.api + 'Actualizar', sala);
   }
 

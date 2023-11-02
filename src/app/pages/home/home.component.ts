@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../services/usuarios.service';
 import { RolesService } from 'src/app/services/roles.service';
 import { SalasService } from 'src/app/services/salas.service';
 import { TablasService } from 'src/app/services/tablas.service';
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public rolesService: RolesService,
-    public jugadoresService: JugadoresService,
+    public jugadoresService: UsuariosService,
     public tablasService: TablasService,
     public salasService: SalasService,
     private _snackBar: MatSnackBar

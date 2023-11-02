@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class JuegosService {
 
-  api = 'https://localhost:44324/api/Juegos/';
+  api = 'https://localhost:44324/api/Partidas/';
 
   constructor( private http: HttpClient ) { }
 

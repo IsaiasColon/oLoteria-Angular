@@ -3,7 +3,7 @@ import { Tabla } from "./tabla";
 export interface IJugador {
     id: number;
     nombre: string;
-    nickName: string;
+    userName: string;
     correo: string;
     contra: string;
     rol: number;
@@ -13,7 +13,7 @@ export interface IJugador {
 export class Jugador implements IJugador{    
     id: number;
     nombre: string;
-    nickName: string;
+    userName: string;
     correo: string;
     contra: string;
     rol: number;
@@ -21,10 +21,10 @@ export class Jugador implements IJugador{
 
     tablas: Array<Tabla>;
 
-    constructor(id: number, nombre: string, nickName: string, correo: string, contra: string, rol: number, activo: boolean) {
+    constructor(id: number, nombre: string, userName: string, correo: string, contra: string, rol: number, activo: boolean) {
         this.id = id;
         this.nombre = nombre;
-        this.nickName = nickName;
+        this.userName = userName;
         this.correo = correo;
         this.contra = contra;
         this.rol = rol;

@@ -6,9 +6,9 @@ import { IJugador } from '../_models/jugador';
 @Injectable({
   providedIn: 'root'
 })
-export class JugadoresService {
+export class UsuariosService {
 
-  api = 'https://localhost:44324/api/Jugadores/';
+  api = 'https://localhost:44324/api/Usuarios/';
 
   constructor( private http: HttpClient ) { }
   

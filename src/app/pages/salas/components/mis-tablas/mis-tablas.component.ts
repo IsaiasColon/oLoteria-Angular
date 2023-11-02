@@ -31,7 +31,9 @@ export class MisTablasComponent implements OnInit, AfterViewInit{
       this.sala = this.data;
       const user = this.localStorage.obtenerUsuarioConectado();
       // console.log(user);
-      this.getMisTablas( user.id );
+      if (user != null) {
+        this.getMisTablas( user.id );        
+      }
   }
 
   ngAfterViewInit() {

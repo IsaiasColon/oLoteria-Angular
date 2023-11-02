@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { JuegosService } from 'src/app/services/juegos.service';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../services/usuarios.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SalasService } from 'src/app/services/salas.service';
 import { TablasJugadasService } from 'src/app/services/tablas-jugadas.service';
@@ -28,16 +28,16 @@ export class SalasComponent implements OnInit, AfterViewInit {
   salas: ISala[] = [];
   jugadores: IJugador[] = [];
 
-  displayedColumns: string[] = ['position', 'nombre', 'tipo', 'creador', 'jugadoresMin', 'jugadoresMax', 'protegida', 'contra', 'activo', 'acciones'];
-  dataSource: MatTableDataSource<ISala> = {} as any;
+  displayedColumns: string[] = ['position', 'nombre', 'tipo', 'creador', 'jugadoresMin', 'jugadoresMax', 'activo', 'acciones'];
+  dataSource: ISala[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator = {} as any;
-  @ViewChild(MatSort) sort: MatSort = {} as any;
+  // @ViewChild(MatSort) sort: MatSort = {} as any;
 
   constructor(
     private _ss: SalasService,
     public dialog: MatDialog,
-    private _jss: JugadoresService,
+    private _jss: UsuariosService,
     private router: Router,
     private _js: JuegosService,
     private _tjs: TablasJugadasService,
@@ -45,12 +45,12 @@ export class SalasComponent implements OnInit, AfterViewInit {
     ) { 
       
     // Create 100 users
-    // this.getSalas();
+    this.getSalas();
     }
 
   ngOnInit(): void {
-    // this.getJugadores();
-    // this.getSalas();
+    this.getJugadores();
+    this.getSalas();
   }
 
   ngAfterViewInit(){
@@ -60,16 +60,16 @@ export class SalasComponent implements OnInit, AfterViewInit {
   seleccionarTablas( sala: ISala ): void {
     const dialogRef = this.dialog.open(MisTablasComponent, {
       width: '80%',
-      data: sala
+      data: {'sala': sala}
     });
     dialogRef.afterClosed().subscribe((result: ITabla[]) => {
       // console.log(result);
       if (result) {
         // var tablas: ITablaJugada[] = new result.values(){}
         // console.log('Crear juego');
-        var tablas = result.map( (t: ITabla) => {
-                            t.cartas = t.cartas.map( c => new Carta(c.id, c.numero, c.tabla, c.activo) );
-                            return t;
+        var tablas = result.map( (t: any) => {
+          t.cartas.split(',');                            
+          return t;
         });
         // console.log(tablas);
         if (tablas) {
@@ -105,7 +105,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
       this.salas = salas;
 
       // Assign the data to the data source for the table to render
-      this.dataSource = new MatTableDataSource(salas);
+      this.dataSource = salas;
     });
   }  
 

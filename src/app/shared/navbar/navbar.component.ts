@@ -2,10 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../services/usuarios.service';
 import { IJugador, JugadorConectado } from '../../_models/jugador';
 import { LoginFormComponent } from '../login-form/login-form.component';
-import { LoginService } from "src/app/services/login.service";
+import { LoginService } from "../../services/login.service";
 import { LocalStorageService } from "src/app/services/local-storage.service";
 
 @Component({

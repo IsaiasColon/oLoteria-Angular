@@ -17,8 +17,8 @@
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width">
       <mat-label>Nombre de Usuario</mat-label>
-      <input matInput #nickName maxlength="20" type="text" formControlName="nickName" />
-      <mat-hint align="end">{{nickName.value.length}} / 20</mat-hint>
+      <input matInput #userName maxlength="20" type="text" formControlName="userName" />
+      <mat-hint align="end">{{userName.value.length}} / 20</mat-hint>
     </mat-form-field></td>
   </tr></table>
 
@@ -46,6 +46,6 @@
   
     <div mat-dialog-actions align="end">
       <button mat-button color="accent" type="button" (click)="onNoClick()" >Cancelar</button>
-      <button mat-button color="primary" type="submit" cdkFocusInitial>Guardar</button>
+      <button mat-button color="primary" type="submit" [mat-dialog-close]="data.jugador" cdkFocusInitial>Guardar</button>
     </div>
 </form>

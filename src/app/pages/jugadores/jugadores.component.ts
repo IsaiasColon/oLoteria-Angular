@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../services/usuarios.service';
 import { RolesService } from 'src/app/services/roles.service';
 import { IRol } from 'src/app/_models/rol';
 import { IJugador } from "../../_models/jugador";
@@ -15,9 +15,9 @@ export class JugadoresComponent implements OnInit {
   jugadores: IJugador[] = [];
   roles: IRol[] = [];
 
-  displayedColumns: string[] = ['position', 'nombre', 'nickName', 'correo', 'rol', 'activo', 'acciones'];
+  displayedColumns: string[] = ['position', 'nombre', 'userName', 'correo', 'rol', 'activo', 'acciones'];
 
-  constructor( private _js: JugadoresService,
+  constructor( private _js: UsuariosService,
     public dialog: MatDialog,
     private _rs: RolesService ) { }
 
@@ -28,7 +28,7 @@ export class JugadoresComponent implements OnInit {
 
   getJugadores(){
     this._js.gets().subscribe( (jugadores: IJugador[]) => {
-      // console.log(jugadores);
+      console.log(jugadores);
       this.jugadores = [];
       this.jugadores = jugadores;
     }, error => {

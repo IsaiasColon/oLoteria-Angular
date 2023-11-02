@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import { IJugador } from '../../../_models/jugador';
 
 @Component({
@@ -16,7 +16,7 @@ export class JugadorComponent implements OnInit {
   constructor(
     private router: Router,
     private activated: ActivatedRoute,
-    private _js: JugadoresService
+    private _js: UsuariosService
   ) { }
 
   ngOnInit(): void {

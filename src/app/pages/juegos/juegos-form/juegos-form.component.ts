@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JugadoresService } from 'src/app/services/jugadores.service';
+import { UsuariosService } from '../../../services/usuarios.service';
 import { JuegosService } from 'src/app/services/juegos.service';
 import { IJugador } from 'src/app/_models/jugador';
 import { IJuego } from 'src/app/_models/juego';
@@ -27,7 +27,7 @@ export class JuegosFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data = {} as any,
     private fb: FormBuilder,
     private _js: JuegosService,
-    private _jgs: JugadoresService,
+    private _jgs: UsuariosService,
     private _ss: SalasService,
     private router: Router,
     private activated: ActivatedRoute
