@@ -8,8 +8,8 @@
         </mat-grid-tile-header>
         <mat-grid-tile *ngFor="let carta of tabla.cartas">
             <div>
-                <img *ngIf="cartasLanzadas.includes(carta.numero)" class="carta cartaSalida" [src]="carta.numero | carta" alt="">
-                <img *ngIf="!cartasLanzadas.includes(carta.numero)" class="carta cartaPorSalir" [src]="carta.numero | carta" alt="">
+                <img *ngIf="cartasLanzadas.includes(carta)" class="carta cartaSalida" [src]="carta | carta" alt="">
+                <img *ngIf="!cartasLanzadas.includes(carta)" class="carta cartaPorSalir" [src]="carta | carta" alt="">
             </div>
         </mat-grid-tile>
     </mat-grid-list>

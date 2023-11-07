@@ -62,20 +62,21 @@ export class SalasComponent implements OnInit, AfterViewInit {
       width: '80%',
       data: {'sala': sala}
     });
-    dialogRef.afterClosed().subscribe((result: ITabla[]) => {
+    dialogRef.afterClosed().subscribe((result: any[]) => {
       // console.log(result);
       if (result) {
         // var tablas: ITablaJugada[] = new result.values(){}
         // console.log('Crear juego');
-        var tablas = result.map( (t: any) => {
-          t.cartas.split(',');                            
-          return t;
-        });
-        // console.log(tablas);
-        if (tablas) {
-          this.localStorage.guardarTablas(tablas);
+        // var tablas = result.map( (t: any) => {
+        //   t.cartas.split(',');
+        //   return t;
+        // });
+        console.log(result);
+        
+        if (result) {
+          this.localStorage.guardarTablas(result);
         }
-        // var juego = this.crearJuego( sala );
+        
         this.irSala(sala);
       }    
     });

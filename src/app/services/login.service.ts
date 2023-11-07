@@ -11,7 +11,7 @@ export class LoginService implements OnInit{
 
   // private api: string = 'https://localhost:44324/api/Jugadores/';
   // private api: string = 'http://localhost:8082/api/Jugadores/';
-  api = 'https://localhost:44324/api/Jugadores/';
+  api = 'https://localhost:44324/api/Usuarios/';
 
   constructor( 
     private http: HttpClient,

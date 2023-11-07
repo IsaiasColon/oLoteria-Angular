@@ -70,8 +70,6 @@ export class NavbarComponent implements OnInit {
         this.localStorage.guardarUsuarioConectado(user);
         console.log(user);        
       }
-    }, error => {
-      console.log(error);      
     });
   }
 

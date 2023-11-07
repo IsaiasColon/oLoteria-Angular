@@ -36,9 +36,7 @@ export class MisTablasComponent implements OnInit, AfterViewInit{
       }
   }
 
-  ngAfterViewInit() {
-    
-  }
+  ngAfterViewInit() {}
 
   tablaSeleccionada( tabla: Tabla ){
     if (this.tablasSeleccionadas.includes( tabla )) {
@@ -52,8 +50,9 @@ export class MisTablasComponent implements OnInit, AfterViewInit{
   }
 
   getMisTablas( userId: any) {
-    this._ts.getsByJugador( userId ).subscribe( (tablas: Array<ITabla>) => {
-      this.tablas = tablas.map((t) => new Tabla(t.id, t.nombre, t.cartas, t.jugador, false) );
+    this._ts.getsByJugador( userId ).subscribe( (tablas: Array<any>) => {
+      // this.tablas = tablas.map((t) => new Tabla(t.id, t.nombre, t.cartas, t.jugador, false) );
+      this.tablas = tablas;
       // console.log(tablas);
     });
   }
@@ -63,6 +62,7 @@ export class MisTablasComponent implements OnInit, AfterViewInit{
   }
 
   entrar() {
+    console.log(this.tablasSeleccionadas);    
     this.dialogRef.close( this.tablasSeleccionadas );
   }
 

@@ -12,7 +12,7 @@ export class TablasJugadorComponent implements OnInit, AfterViewInit {
 
   @Input() seleccionada: boolean = false;
   cartasLanzadas: number[] = [];
-  @Input() tabla: ITabla = {} as ITabla;
+  @Input() tabla: any = {} as any;
   @Input() titulo: boolean = false;
 
   constructor(
@@ -32,16 +32,18 @@ export class TablasJugadorComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
-  getCartasByTabla( tabla: ITabla ) {
+  getCartasByTabla( tabla: any ) {
     // console.log(tabla);
+    this.tabla.cartas = this.tabla.cartas.split(',');
+    // this.tabla = tabla;
+    console.log(this.tabla);
     
-    this._cs.getCartasByTabla( tabla.id ).subscribe( (cartas: Array<any>) => {
-      tabla.cartas = cartas;
-      if (cartas.length) {
-        // console.log(cartas);
-      }
+    // this._cs.getCartasByTabla( tabla.id ).subscribe( (cartas: Array<any>) => {
+    //   tabla.cartas = cartas;
+    //   if (cartas.length) {
+    //   }
       
-    });
+    // });
   }
 
   tablaSeleccionada( tabla:ITabla ){

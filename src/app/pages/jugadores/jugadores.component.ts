@@ -31,9 +31,6 @@ export class JugadoresComponent implements OnInit {
       console.log(jugadores);
       this.jugadores = [];
       this.jugadores = jugadores;
-    }, error => {
-      console.log(error);
-      
     });
   }  
 
@@ -41,7 +38,7 @@ export class JugadoresComponent implements OnInit {
     this._js.eliminarJugador(jugador).subscribe( (jugador: IJugador) => {
       console.log(jugador);
       this.getJugadores();
-    }, error => console.error(error));
+    });
   }
 
 
@@ -50,12 +47,12 @@ export class JugadoresComponent implements OnInit {
       this._js.activar(jugador).subscribe( jugador => {
         // console.log(jugador);
         
-      }, error => console.error(error));
+      });
     }else{
       this._js.desactivar(jugador).subscribe( jugador => {
         // console.log(jugador);
         
-      }, error => console.error(error));
+      });
     }
   }  
 
@@ -63,7 +60,7 @@ export class JugadoresComponent implements OnInit {
     this._rs.gets().subscribe( (roles: IRol[]) =>{
       this.roles = roles;
       // console.log(roles);
-    }, error => console.error(error));
+    });
   }
 
   openDialog(jugador?: IJugador): void {
