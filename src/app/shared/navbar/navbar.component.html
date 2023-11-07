@@ -31,14 +31,14 @@
         </li>
       </ul>
     </div>
-    <span class="example-spacer" *ngIf="usuario">
+    <span class="example-spacer spanUser" *ngIf="usuario">
       {{ usuario.nombre }}
     </span>
     <span class="example-spacer" *ngIf="!usuario"></span>
     <button *ngIf="!usuario" mat-icon-button class="example-icon favorite-icon" (click)="openDialog()">
       <mat-icon>login</mat-icon>
     </button>
-    <button *ngIf="usuario" mat-icon-button class="example-icon favorite-icon" (click)="logout()">
+    <button *ngIf="usuario" mat-icon-button class="example-icon favorite-icon" (click)="logout(null)">
       <mat-icon>power_settings_new</mat-icon>
     </button>
   </nav>

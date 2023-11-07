@@ -8,13 +8,15 @@ export interface ICarta {
 export class Carta implements ICarta {
     id: number;
     numero: number;
+    nombre?: string;
     tabla: number;
     conFicha: boolean;
     activo: boolean;
 
-    constructor(id:number, numero: number, tabla: number, activo:boolean){
+    constructor(id:number, numero: number, nombre:string, tabla: number, activo:boolean){
         this.id = id;
         this.numero = numero;
+        this.nombre = nombre;
         this.tabla = tabla;
         this.conFicha = false;
         this.activo = activo;

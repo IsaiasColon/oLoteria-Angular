@@ -15,11 +15,12 @@ import { LoginFormComponent } from './shared/login-form/login-form.component';
 
 //Angular Material
 import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
-import { MatIconModule } from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -111,7 +112,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDialogModule,
     MatSnackBarModule,
     MatGridListModule,
-    MatChipsModule,
     MatSelectModule,
     MatInputModule,
     MatTableModule,
@@ -123,6 +123,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatListModule,
     MatSortModule,
     MatPaginatorModule,
+    MatButtonToggleModule,
+    MatChipsModule,
   ],
   exports: [],
   providers: [],

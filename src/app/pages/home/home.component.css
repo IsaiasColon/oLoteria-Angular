@@ -1,0 +1,73 @@
+mat-raised-button {
+    margin: 0 1% 0 1% !important;
+    padding-top: 30px;
+}
+
+.tablas-container{
+    /* margin: 10px 0; */
+    width: 100%;
+    background-color: rgb(60,60,60);
+    padding: 10px;
+}
+.tabla{
+    width: 24%;
+    margin: 0 0.5%;
+    display: inline-block;
+}
+
+mat-grid-tile {
+    background: lightblue;
+  }
+
+.cartasLanzadas {
+    background-color: rgb(60,60,60);
+    padding: 0 5px;
+}
+
+.carta{
+    width: 100%;
+}
+
+
+
+.cartaSalida{
+    background-color: brown;
+    display: block;
+    border-radius: 20px;
+    padding: 5px;
+    width: 96%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.cartaPorSalir {
+    color: black;
+}
+
+/* .cartaPorSalir::before{
+} */
+
+.colocarFicha{
+    width: 80%;
+    /* display: block; */
+    position: absolute;
+    /* float: left; */
+    top: 10px;
+    left: 10px;
+    /* background: url('../../../assets/img/fichas/azul.png') no-repeat; */
+    padding: 10px;z-index: 9999;
+}
+
+.ficha-colocada{
+    transform: scale(1.2);
+    transition: 500ms;
+}
+
+.ficha{
+    width: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transition: 1s;
+}

@@ -63,8 +63,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  login(nickName: any){
-    this._ls.login(nickName).subscribe( (user:IJugador) => {
+  login(userName: any){
+    this._ls.login(userName).subscribe( (user:IJugador) => {
       this.usuario = user;
       if (this.usuario) {
         this.localStorage.guardarUsuarioConectado(user);
@@ -73,9 +73,9 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  logout(){
+  logout(userName: any){
     this.localStorage.borrarUsuarioConectado();
-    this.usuario = {} as any;
+    this.usuario = userName;    
   }
 
 }

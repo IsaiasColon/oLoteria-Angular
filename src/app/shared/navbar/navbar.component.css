@@ -1,0 +1,17 @@
+.example-action-button {
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+.example-spacer{
+  /* background-color: rgb(50,50,50); */
+  margin: 0 50px;
+}
+
+  
+.spanUser{
+  color:red;
+}
+
+.favorite-icon{
+  background-color: rgb(100,100,100);
+}
