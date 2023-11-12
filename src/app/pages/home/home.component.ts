@@ -7,7 +7,7 @@ import { TablasService } from 'src/app/services/tablas.service';
 import { Carta, Cartas } from "../../_models/carta";
 // import Swal from 'sweetalert2';
 import { SignalRService } from 'src/app/services/signal-r.service';
-import { Tabla } from '../../_models/tabla';
+import { IC, Tabla } from '../../_models/tabla';
 
 const synth = window.speechSynthesis;
 
@@ -15,6 +15,12 @@ interface User {
   _id: number,
   name: string,
   tablas: Tabla[]
+}
+
+interface Sala {
+  _id: number,
+  nombre: string,
+  jugadores: User[],
 }
 
 @Component({
@@ -26,10 +32,10 @@ export class HomeComponent implements OnInit {
 
   fichasColocadas: number[] = [];
 
-  sala:any;
+  sala: Sala = {} as Sala;
   tablas = [] as any;
   user: User = {} as User;
-  cartasLanzadas: Carta[] = [];
+  cartasLanzadas: number[] = [];
   Ganador = false;
 
   parar = false;
@@ -59,14 +65,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-  Adelantar(cartas: any){
-    var carta: Carta = {} as any;
-    var numero = 0;
+  Adelantar(cartas: number){
+    var cartaNumero: number = 0;
+    // var numero = 0;
     while(cartas >= 0){
-      numero = Math.floor(Math.random() * (55 - 1)) + 1;
-      carta.numero = numero;
-      if (!this.cartasLanzadas.includes(carta)) {
-        this.cartasLanzadas.push(carta);
+      cartaNumero = Math.floor(Math.random() * (55 - 1)) + 1;
+      if (!this.cartasLanzadas.includes(cartaNumero)) {
+        this.cartasLanzadas.push(cartaNumero);
       }
       cartas--;
     }
@@ -81,24 +86,33 @@ export class HomeComponent implements OnInit {
   //   });
   // }
 
-  fichaColocada(carta:any){
+  fichaColocada(carta:IC){
     console.log(carta);
-    console.log(this.cartasLanzadas);
-    console.log(this.fichasColocadas);
+    // console.log(this.cartasLanzadas);
+    // console.log(this.fichasColocadas);
     
-    if (this.fichasColocadas.includes( carta )) {
-      this.fichasColocadas.splice(this.fichasColocadas.indexOf(carta), 1);
+    if (this.fichasColocadas.includes( carta.numero )) {
+      this.fichasColocadas.splice(this.fichasColocadas.indexOf(carta.numero), 1);
     } else{
-      if (this.cartasLanzadas.includes(carta)) {
-        carta.conFicha = true;
+      if (this.cartasLanzadas.includes(carta.numero)) {
+        carta.conFicha = !carta.conFicha;
         this.fichasColocadas.push(carta.numero);
       }
     }
   }
 
-  clickEvent(event:any){
-    // console.log(event);
-    this.fichaColocada(event)  
+  colocarFicha(carta:IC, tabla: Tabla){
+    // console.log(carta);
+    // console.log(tabla);
+
+    // carta.conFicha = false;
+    if (this.cartasLanzadas.includes(carta.numero)) {
+      carta.conFicha = !carta.conFicha;
+    }else{
+      carta.conFicha = false;
+    }
+    console.log(carta);
+    
   }
 
   crearMatriz(cartas:Array<number>){
@@ -212,14 +226,15 @@ export class HomeComponent implements OnInit {
   }
 
   LanzarCarta(){
-    var cartaNueva: Carta = new Carta(0, 0, "", 0, true);
+    var cartaNumero: number = 0;
+    var cartaNombre = "";
     while(true){
-      cartaNueva.numero = Math.floor(Math.random() * (55 - 1)) + 1;
+      cartaNumero = Math.floor(Math.random() * (55 - 1)) + 1;
       // var numbre:string = Cartas.find(x=>x.numero == cartaNueva).nombre;
-      cartaNueva.nombre = Cartas.find(x=>x.numero == cartaNueva.numero)?.nombre || 'Carta no encontrada';
-      if (!this.cartasLanzadas.includes(cartaNueva)) {
-        this.cartasLanzadas.push(cartaNueva);
-        this.reproducir(cartaNueva.nombre);
+      cartaNombre = Cartas.find(x=>x.numero == cartaNumero)?.nombre || 'Carta no encontrada';
+      if (!this.cartasLanzadas.includes(cartaNumero)) {
+        this.cartasLanzadas.push(cartaNumero);
+        this.reproducir(cartaNombre);
         if (this.cartasLanzadas.length > 25) {
           this.verJugadas();
         }
@@ -260,8 +275,8 @@ export class HomeComponent implements OnInit {
   crearSala(){
     var sala = {
       _id: 11,
-      name: 'Sala de skp',
-      jugadores: 0
+      nombre: 'Sala de skp',
+      jugadores: []
     }
     this.sala = sala;
     this.openSnackBar('Se ha creado la sala', 'Me vale!');

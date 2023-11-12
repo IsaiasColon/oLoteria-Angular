@@ -1,9 +1,9 @@
 <!-- <p>home works!</p> -->
 <div class="example-button-row mt-4 text-center">
     <button mat-raised-button (click)="getUser()">Obtener usuario</button>
-    <button *ngIf="user" mat-raised-button color="primary">Crear Sala</button>
+    <button *ngIf="user" mat-raised-button color="primary" (click)="crearSala()">Crear Sala</button>
     <button *ngIf="user" mat-raised-button color="accent" (click)="GenerarTabla()">Generar Tabla</button>
-    <!-- <button mat-raised-button color="warn" (click)="LanzarCarta()">Lanzar Carta</button> -->
+    <button mat-raised-button color="warn" (click)="LanzarCarta()">Lanzar Carta</button>
     <button mat-raised-button color="danger" (click)="IniciarJuego()">Iniciar Juego</button>
     <!-- <button mat-raised-button color="danger" (click)="Swet()">Swet</button> -->
     <button mat-raised-button color="danger" (click)="Adelantar(2)">Adelantar</button>
@@ -14,14 +14,18 @@
     <div class="tabla" *ngFor="let tabla of tablas">
       <mat-grid-list cols="4" rowHeight="7:11">
         <mat-grid-tile-header>{{ tabla.nombre }}</mat-grid-tile-header>
-        <mat-grid-tile [ngClass]="{'ficha-colocada': fichasColocadas.includes( carta )}"
-                      *ngFor="let carta of tabla.cartas" (click)="clickEvent(carta)">
+        <mat-grid-tile 
+                      *ngFor="let carta of tabla.cartas" (click)="colocarFicha(carta, tabla)">
           <div>
-            <img *ngIf="cartasLanzadas.includes(carta)" class="carta cartaSalida" [src]="carta.numero | carta" alt="">
-            <!-- <img *ngIf="!cartasLanzadas.includes(carta)" src="/src
-            /assets/img/fichas/azul.png" class="colocarFicha" alt=""> -->
-            <img *ngIf="!cartasLanzadas.includes(carta)" class="carta cartaPorSalir" [src]="carta.numero | carta" alt="">
-            <img *ngIf="fichasColocadas.includes(carta.numero)" class="ficha" src="../../../assets/img/fichas/azul.png" alt="">
+            <!-- <img *ngIf="cartasLanzadas.includes(carta.numero)" class="carta cartaSalida" [src]="carta.numero | carta" alt=""> -->
+            <!-- <img *ngIf="!cartasLanzadas.includes(carta.numero)" class="carta cartaPorSalir" [src]="carta.numero | carta" alt=""> -->
+
+            <!-- <img *ngIf="!cartasLanzadas.includes(carta)" src="../../../assets/img/fichas/azul.png" class="colocarFicha" alt=""> -->
+            <img class="carta" [src]="carta.numero | carta" alt="">
+            <!-- <img *ngIf="!carta.conFicha" class="ficha" alt=""> -->
+            <!-- <img *ngIf="carta.conFicha" class="ficha" src="../../../assets/img/fichas/azul2.png" alt=""> -->
+            <img *ngIf="carta.conFicha" class="ficha" [src]="true | ficha" alt="">
+            <!-- <img *ngIf="fichasColocadas.includes(carta.numero)" class="ficha" src="../../../assets/img/fichas/verde.png" alt=""> -->
           </div>
         </mat-grid-tile>
       </mat-grid-list>
@@ -41,7 +45,7 @@
 
 
   <mat-chip-listbox aria-label="Fish selection">
-    <mat-chip-option *ngFor="let carta of cartasLanzadas">{{ carta.nombre }}</mat-chip-option>
+    <mat-chip-option *ngFor="let carta of cartasLanzadas">{{ carta }}</mat-chip-option>
   </mat-chip-listbox>
 
   <!-- <div class="cartasLanzadas mt-2">

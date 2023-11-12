@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HomeComponent } from './pages/home/home.component';
 import { CartaPipe } from './pipes/carta.pipe';
+import { FichaPipe } from './pipes/ficha.pipe';
+
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { LoginFormComponent } from './shared/login-form/login-form.component';
@@ -96,7 +98,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SalasFormComponent,
     EntrarSalaDialogComponent,
     MisTablasComponent,
-    JuegosFormComponent
+    JuegosFormComponent,
+    FichaPipe
   ],
   imports: [
     BrowserModule,
