@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CartaPipe } from './pipes/carta.pipe';
 import { FichaPipe } from './pipes/ficha.pipe';
@@ -50,7 +51,6 @@ import { JuegoComponent } from './pages/juegos/juego/juego.component';
 import { PruebasComponent } from './pages/pruebas/pruebas.component';
 import { TablasJugadorComponent } from './shared/tablas-jugador/tablas-jugador.component';
 import { RolesFormComponent } from './pages/roles/roles-form/roles-form.component';
-import { CommonModule } from '@angular/common';
 import { TablasFormComponent } from './pages/tablas/tablas-form/tablas-form.component';
 import { TablaSeguidaComponent } from './pages/tablas/components/tabla-seguida/tabla-seguida.component';
 import { TablaAmbasComponent } from './pages/tablas/components/tabla-ambas/tabla-ambas.component';
@@ -109,6 +109,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+
     
     MatIconModule,
     MatButtonModule,

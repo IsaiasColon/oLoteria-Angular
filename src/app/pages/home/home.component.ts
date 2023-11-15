@@ -5,7 +5,7 @@ import { RolesService } from 'src/app/services/roles.service';
 import { SalasService } from 'src/app/services/salas.service';
 import { TablasService } from 'src/app/services/tablas.service';
 import { Carta, Cartas } from "../../_models/carta";
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { SignalRService } from 'src/app/services/signal-r.service';
 import { IC, Tabla } from '../../_models/tabla';
 
@@ -45,7 +45,8 @@ export class HomeComponent implements OnInit {
     public jugadoresService: UsuariosService,
     public tablasService: TablasService,
     public salasService: SalasService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private signalrService: SignalRService
     ) {
     let roles = rolesService.gets().subscribe(resp => {
       console.log(resp);
@@ -77,14 +78,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // Swet(){
-  //   Swal.fire({
-  //     title: 'Error!',
-  //     text: 'Do you want to continue',
-  //     icon: 'error',
-  //     confirmButtonText: 'Cool'
-  //   });
-  // }
+  Swet(){
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    });
+  }
 
   fichaColocada(carta:IC){
     console.log(carta);

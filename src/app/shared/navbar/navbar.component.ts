@@ -7,6 +7,7 @@ import { IJugador, JugadorConectado } from '../../_models/jugador';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { LoginService } from "../../services/login.service";
 import { LocalStorageService } from "src/app/services/local-storage.service";
+import { SignalRService } from 'src/app/services/signal-r.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private _ls: LoginService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private signalrService: SignalRService
     ) {}
 
   ngOnInit(): void {
@@ -68,7 +70,8 @@ export class NavbarComponent implements OnInit {
       this.usuario = user;
       if (this.usuario) {
         this.localStorage.guardarUsuarioConectado(user);
-        console.log(user);        
+        console.log(user);
+        this.signalrService.prueba(user);
       }
     });
   }

@@ -9,7 +9,7 @@ import { TablasJugadasService } from 'src/app/services/tablas-jugadas.service';
 import { Carta } from 'src/app/_models/carta';
 import { IJuego } from 'src/app/_models/juego';
 import { ISala } from 'src/app/_models/sala';
-import { ITabla } from 'src/app/_models/tabla';
+import { ITabla, Tabla } from 'src/app/_models/tabla';
 import { ITablaJugada } from '../../_models/tabla-jugada';
 import { IJugador, JugadorConectado } from "../../_models/jugador";
 import { EntrarSalaDialogComponent } from './components/entrar-sala-dialog/entrar-sala-dialog.component';
@@ -60,7 +60,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
   seleccionarTablas( sala: ISala ): void {
     const dialogRef = this.dialog.open(MisTablasComponent, {
       width: '80%',
-      data: {'sala': sala}
+      data: sala
     });
     dialogRef.afterClosed().subscribe((result: any[]) => {
       // console.log(result);
@@ -97,7 +97,7 @@ export class SalasComponent implements OnInit, AfterViewInit {
   // }
 
   irSala( sala: ISala ){
-    this.router.navigate(['/salas', sala.id]);
+    this.router.navigate(['/salas/', sala.id]);
   }
 
   getSalas(){

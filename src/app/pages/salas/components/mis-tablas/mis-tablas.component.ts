@@ -17,7 +17,7 @@ export class MisTablasComponent implements OnInit, AfterViewInit{
   cartasLanzadas: number[] = [];
   sala: ISala = {} as any;
   tablas: any[] = [];
-  tablasSeleccionadas: Tabla[] = [];
+  tablasSeleccionadas: any[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<MisTablasComponent>,
